@@ -15,6 +15,7 @@ export default function LiveChat() {
     const init = async () => {
       await startConnection();
       onMessageReceived((message) => {
+        console.log(message)
         setMessages((prevMessages) => [...prevMessages, message]);
       });
     };

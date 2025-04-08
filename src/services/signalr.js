@@ -27,15 +27,13 @@ export const startConnection = () => {
     });
 };
 
-export const onMessageReceived = () => {
+export const onMessageReceived = (callback) => {
   if (!connection) {
     console.warn("SignalR not connected yet");
     return;
   }
 
-  connection.on("ReceiveMessage", (id, message) => {
-    console.log(id, message);
-  });
+  connection.on("ReceiveMessage", callback);
 };
 
 export const sendMessage = (message, RId) => {
