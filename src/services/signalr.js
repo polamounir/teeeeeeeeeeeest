@@ -38,13 +38,14 @@ export const onMessageReceived = (callback) => {
   connection.on("ReceiveMessage", callback);
 };
 
-export const sendMessage = (message) => {
+export const sendMessage = (message, RId) => {
+    console.log(message , RId)
   if (!connection) {
     console.warn("Cannot send message. SignalR not connected.");
     return;
   }
 
-  return connection.invoke("SendMessage", message).catch((err) => {
+  return connection.invoke("SendMessage", RId, message).catch((err) => {
     console.error("SendMessage Error:", err);
   });
 };

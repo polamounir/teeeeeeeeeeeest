@@ -9,6 +9,7 @@ import {
 export default function LiveChat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [rId, setRId] = useState("");
 
   useEffect(() => {
     const init = async () => {
@@ -19,7 +20,6 @@ export default function LiveChat() {
     };
 
     init();
-
     return () => {
       stopConnection();
     };
@@ -27,7 +27,7 @@ export default function LiveChat() {
 
   const handleSend = async () => {
     if (!input.trim()) return;
-    await sendMessage(input);
+    await sendMessage(input, rId);
     setInput("");
   };
 
@@ -53,6 +53,17 @@ export default function LiveChat() {
         >
           SEND
         </button>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          className="border"
+          onChange={(e) => {
+            setRId(e.target.value);
+            console.log(rId);
+          }}
+        />
       </div>
     </div>
   );
