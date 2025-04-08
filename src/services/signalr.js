@@ -2,14 +2,12 @@ import * as signalR from "@microsoft/signalr";
 
 const token = localStorage.getItem("token");
 
-
 let connection = null;
 localStorage;
 export const startConnection = () => {
   if (connection && connection.state === signalR.HubConnectionState.Connected) {
     return Promise.resolve(connection);
   }
-
 
   connection = new signalR.HubConnectionBuilder()
     .withUrl("https://zerobyte.localto.net/hubs/chat", {
@@ -29,17 +27,19 @@ export const startConnection = () => {
     });
 };
 
-export const onMessageReceived = (callback) => {
+export const onMessageReceived = () => {
   if (!connection) {
     console.warn("SignalR not connected yet");
     return;
   }
 
-  connection.on("ReceiveMessage", callback);
+  connection.on("ReceiveMessage", (id, message) => {
+    console.log(id, message);
+  });
 };
 
 export const sendMessage = (message, RId) => {
-    console.log(message , RId)
+  console.log(message, RId);
   if (!connection) {
     console.warn("Cannot send message. SignalR not connected.");
     return;

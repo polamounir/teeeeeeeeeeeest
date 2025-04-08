@@ -27,7 +27,8 @@ export default function LiveChat() {
 
   const handleSend = async () => {
     if (!input.trim()) return;
-    await sendMessage(input, rId);
+   const res=  await sendMessage(input, rId);
+   console.log(res)
     setInput("");
   };
 
