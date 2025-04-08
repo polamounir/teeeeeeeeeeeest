@@ -20,12 +20,6 @@ export default function LiveChat() {
 
     init();
 
-    localStorage.setItem(
-      "token",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxNmFmMWUyNy02MTJhLTQ3NzMtOWQzOS0wOGRkNmQwOWY2Y2MiLCJGdWxsTmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBncmFkZWNvbS5jb20iLCJVc2VyVHlwZSI6IkFkbWluIiwibmJmIjoxNzQ0MTIyOTcxLCJleHAiOjE4MDg5MjI5NzEsImlhdCI6MTc0NDEyMjk3MX0.KIAff3HOZrPQz3DgC1owUCN2Z4uFJtShZvbhVVsuXiw"
-    );
-
-
     return () => {
       stopConnection();
     };
