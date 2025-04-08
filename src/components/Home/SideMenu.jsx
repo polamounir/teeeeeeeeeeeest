@@ -11,7 +11,7 @@ export default function SideMenu() {
     {
       id: 1,
       name: "Dashboard",
-      link: "/dashboard",
+      link: "/chat",
       icon: <IoSpeedometerOutline />,
     },
     {
