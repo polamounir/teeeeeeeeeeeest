@@ -14,8 +14,8 @@ export default function LiveChat() {
   useEffect(() => {
     const init = async () => {
       await startConnection();
-      onMessageReceived((message) => {
-        console.log(message)
+      onMessageReceived((id, message) => {
+        console.log(id, message);
         setMessages((prevMessages) => [...prevMessages, message]);
       });
     };
@@ -28,8 +28,8 @@ export default function LiveChat() {
 
   const handleSend = async () => {
     if (!input.trim()) return;
-   const res=  await sendMessage(input, rId);
-   console.log(res)
+    const res = await sendMessage(input, rId);
+    console.log(res);
     setInput("");
   };
 
